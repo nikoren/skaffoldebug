@@ -6,8 +6,8 @@ import (
 
 
 type appConfig struct {
-	port string `required:"true"`
-	clients map[string]int
+	Port string `required:"true"`
+	Clients map[string]int `required:"true"`
 }
 
 func loadConfig()(appConfig,error){

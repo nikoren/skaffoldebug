@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 )
@@ -15,6 +16,12 @@ func (s *server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	config, err := loadConfig()
+	if err != nil {
+		panic("failed to lod config:" + err.Error())
+	}
+
+	fmt.Println("The config is ", config)
 	s := &server{}
 	http.Handle("/", s)
 	log.Fatal(http.ListenAndServe(":8080", nil))

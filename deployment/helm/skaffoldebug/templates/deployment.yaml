@@ -25,3 +25,8 @@ spec:
           ports:
             - containerPort: {{ .Values.http.containerPort }}
               name: {{ .Values.http.name }}
+          env:
+            {{ range $key, $value := .Values.env }}
+            - name: {{ $key | upper | quote }}
+              value: {{ $value }}
+            {{ end }}
